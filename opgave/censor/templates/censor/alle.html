@@ -1,0 +1,135 @@
+{% extends 'censor/base.html' %}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="row justify-content-center mt-1">
+        <div class="col-md-12 col-sm-12 p-4">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="pt-5">
+                    {% for cen in censor %}
+                    <div class="row">
+                        
+                        <div class="col-md-8 col-sm-12">
+                            <div class="d-flex flex-row">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ cen.pk }}">
+                                    <label class="form-check-label">{{ cen.firstname }}</label>
+                                    <label class="form-check-label">{{ cen.lastname }}</label>
+                                </div>
+                              
+                            </div>
+                            
+                            <p>Fag: {{ cen.fag }}</p>
+                            <p>Klassetrin:{{ cen.klassetrin }}</p>
+                            
+                            <p>Lærer:{{ cen.teacher}}</p>
+                            
+                           
+                            
+                        </div>
+                    </div>
+                    <hr />
+                {% endfor %}
+                </div>
+
+                <div class="pt-5">
+                    {% for gr1 in gruppe1 %}
+                    <div class="row mt-4">
+                        <div class="col-md-2 col-sm-12">
+                            <img class="rounded" src="{{ gr1.image.url }}" width="150" height="100"/>
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <div class="d-flex flex-row">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ gr1.pk }}">
+                                    <label class="form-check-label">{{ gr1.navn }}</label>
+                                </div>
+                              </div>
+                                <p> Stilling: {{ gr1.stilling }}</p>
+                                
+                            
+                            <h5>TLF.:</h5>
+                            <p>{{ gr1.tlf }}</p>
+                            <h5>Fødselsdag:</h5>
+                            <p>{{ gr1.fødselsdag}}</p>
+                            <h5>Gruppe:</h5>
+                            <p>{{ gr1.gruppe }}</p>
+                            
+                    </div>
+                    <hr />
+                    {% endfor %}
+                </div>
+
+                <div class="pt-5">
+                    {% for gr2 in gruppe2 %}
+                    <div class="row mt-4">
+                        <div class="col-md-2 col-sm-12">
+                            <img class="rounded" src="{{ gr2.image.url }}" width="150" height="100"/>
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <div class="d-flex flex-row">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ gr2.pk }}">
+                                    <label class="form-check-label">{{ gr2.navn }}</label>
+                                </div>
+                                
+                               
+                            </div>
+                            <p> Stilling: {{ gr2.stilling }}</p>
+                            <h5>TLF.:</h5>
+                            <p>{{ gr2.tlf }}</p>
+                            <h5>Fødselsdag:</h5>
+                            <p>{{ gr2.fødselsdag}}</p>
+                            <h5>Gruppe:</h5>
+                            <p>{{ gr2.gruppe }}</p>
+                            
+                        </div>
+                    </div>
+                    <hr />
+                    {% endfor %}
+                </div>
+
+                <div class="pt-5">
+                    {% for gr3 in gruppe3 %}
+                    <div class="row mt-4">
+                        <div class="col-md-2 col-sm-12">
+                            <img class="rounded" src="{{ gr3.image.url }}" width="150" height="100"/>
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <div class="d-flex flex-row">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ gr3.pk }}">
+                                    <label class="form-check-label">{{ gr3.navn }}</label>
+                                </div>
+                               
+                            </div>
+                            <p> Stilling: {{ gr3.stilling }}</p>
+                            <h5>TLF.:</h5>
+                            <p>{{ gr3.tlf }}</p>
+                            <h5>Fødselsdag:</h5>
+                            <p>{{ gr3.fødselsdag}}</p>
+                            <h5>Gruppe:</h5>
+                            <p>{{ gr3.gruppe }}</p>
+                            
+                        </div>
+                    </div>
+                    <hr />
+                    {% endfor %}
+                </div>
+                
+                </div>
+
+                <!-- Button trigger modal 
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#submitModal">
+                    
+                </button>-->
+
+                <!--<button class="btn btn-primary mt-5">Se indhold</button>-->
+
+                
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
