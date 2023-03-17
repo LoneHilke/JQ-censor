@@ -1,0 +1,55 @@
+{% extends 'censor/base.html' %}
+
+{% block content %}
+<div class="d-flex" id="wrapper">
+    <div class="border-end bg-white" id="sidebar-wrapper">
+      <div class="sidebar-heading border-bottom bg-light"></div>
+      <div class="list-group list-group-flush">
+        
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url '9klasse' %}">9. klasse</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url '10klasse' %}">10 klasse</a>            
+        
+                    
+      </div>
+    </div>
+  </div>
+<div class="container mb-5">
+    <div class="row justify-content-center mt-1">
+        <div class="col-md-12 col-sm-12 p-4">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="pt-5">
+                    {% for klas in klassetrin %}
+                    <div class="row">
+                        
+                        <div class="col-md-8 col-sm-12">
+                            <div class="d-flex flex-row">
+                                <div class="form-group form-check">
+                                    
+                                   <!-- <label class="form-check-label">Fornavn: {{ fa.firstname }}</label>
+                                    <label class="form-check-label">Efternavn: {{ fa.lastname }}</label>-->
+                                </div>
+                              
+                            </div>
+                            <p>Fornavn: {{ klas.firstname }}</p>
+                            <p>Efternavn: {{ klas.lastname }}</p>
+                            <p>Fag: {{ klas.fag }}</p>
+                            <p>Klassetrin:{{ klas.klassetrin }}</p>
+                            
+                            <p>Lærer:{{ klas.teacher}}</p>
+                            
+                           
+                            
+                        </div>
+                    </div>
+                    <hr />
+                {% endfor %}
+                </div>
+                
+            </div>
+                
+        </form>
+    </div>
+</div>
+</div>
+{% endblock content %}

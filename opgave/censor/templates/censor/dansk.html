@@ -1,0 +1,36 @@
+{% extends 'censor/base.html' %}
+{% block content %}
+<div class="container mb-5">
+    <div class="row justify-content-center mt-1">
+        <div class="col-md-12 col-sm-12 p-4">
+            <form method="POST">
+                <h3>Dansk</h3>
+                {% csrf_token %}
+                <div class="pt-5">
+                    {% for dan in dansk %}
+                    <div class="row">
+                        
+                        <div class="col-md-8 col-sm-12">
+                            
+                            <p>Fornavn: {{ dan.firstname }}</p>
+                            <p>Efternavn: {{ dan.lastname }}</p>
+                            <!--<p>Fag: {{ dan.fag }}</p>-->
+                            <p>Klassetrin:{{ dan.censor.klassetrin }}</p>
+                            
+                            <p>Lærer:{{ censor.teacher}}</p>
+                            
+                           
+                            
+                        </div>
+                    </div>
+                    <hr />
+                {% endfor %}
+                </div>
+               
+            </div>
+
+        </form>
+    </div>
+</div>
+</div>
+{% endblock content %}

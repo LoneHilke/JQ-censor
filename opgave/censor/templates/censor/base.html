@@ -22,8 +22,8 @@
         <div class="sidebar-heading border-bottom bg-light"></div>
         <div class="list-group list-group-flush">
           <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/">Hjem</a>
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">Fag</a>
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">Klassetrin</a>            
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'fag' %}">Fag</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'klassetrin' %}">Klassetrin</a>            
           <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">Lærer</a>
           <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'alle' %}">Alle</a>
           

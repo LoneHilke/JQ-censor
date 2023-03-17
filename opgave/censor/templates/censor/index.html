@@ -1,0 +1,48 @@
+{% extends "censor/base.html" %}
+{% block  content %}
+
+
+{% load static %}
+
+<h1>Alle censorer</h1>
+<div class="row">
+{% for censor in censors %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            
+            <div class="card-body">
+              {% for fag in censor.fag.all %}
+              <a href="{% url 'alle' fag.fag %}">
+                {{ fag.fag }}
+              </a>&nbsp;
+              {% endfor %}
+                <h5 class="card-title">{{ censor.fag }}</h5>
+                <p class="card-text">{{ post.description }}</p>
+                <a href="{% url 'alle' censor.pk %}"
+                   class="btn btn-primary">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+
+<div class="col-md-8 offset-md-2">
+    <h1>Blog Index</h1>
+    <hr>
+    {% for censor in censors %}
+    <h2><a href="{% url 'alle' censor.pk%}">{{ censor.firstname }}{{ censor.lastname }}</a></h2>
+    <small>
+        {{censor.created_on.date }} |&nbsp;
+        klassetrin:&nbsp;
+        {% for klassetrin in censor.klassetrin.all %}
+        <a href="{% url 'alle' klassetrin.klassetrin %}">
+            {{ klassetrin.klasse }}
+        </a>&nbsp;
+        {% endfor %}
+    </small>
+    <p>{{ censer.teacher | slice:":400" }}...</p>
+    {% endfor %}
+</div>
