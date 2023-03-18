@@ -3,8 +3,25 @@
 
 
 {% load static %}
-
+<form action="{% url 'search_results' %}" method="get">
+    <input name="q" type="text" placeholder="Search...">
+  </form>
 <h1>Alle censorer</h1>
+<table border="1">
+    <td><a href="update/{{ x.id }}">{{ x.id }}UPDATE</a></td>
+{% for x in censor %}
+<tr>
+<td><a href="update/{{ x.id }}">{{ x.id }}</a></td>
+<td>{{ x.id }}</td>
+<td>{{ x.firstname}}</td>
+<td>{{ x.lastname }}</td>
+<td>{{ x.fag }}</td>
+<td>{{ x.klassetrin }}</td>
+<td>{{ x.teacher }}</td>
+<td><a href="delete/{{ x.id }}">slet</a></td>
+</tr>
+{% endfor %}
+</table>
 <div class="row">
 {% for censor in censors %}
     <div class="col-md-4">

@@ -1,0 +1,21 @@
+<h1>opdater censor</h1>
+
+<form action="updaterecord/{{ mymember.id }}" method="post">
+{% csrf_token %}
+Fornavn:<br>
+<input name="first name" value="{{ censor.firstname }}">
+<br><br>
+Efternavn:<br>
+<input name="lastname" value="{{ censor.lastname }}">
+<br><br>
+Fag:<br>
+<input name="fag" value="{{ censor.fag }}">
+<br><br>
+Klassetrin:<br>
+<input name="klassetrin" value="{{ censor.klassetrin }}">
+<br><br>
+Lærer:<br>
+<input name="teacher" value="{{ censor.teacher }}">
+<br><br>
+<input type="submit" value="Submit">
+</form>

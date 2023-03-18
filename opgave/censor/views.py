@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from .models import Censor, Klassetrin, Fag, Teacher
 
 # Create your views here.
@@ -128,3 +128,40 @@ class Klasse10(View):
             #'teacher': teacher
         }
         return render(request, 'censor/10klasse.html', context)
+
+class Update(View):
+  def get(self, request, *args, **kwargs):
+        censor = Censor.objects.all = 'censor'
+        # template = loader.get_template('update.html')
+        context = {
+            'censor': censor,
+        }
+        return render(request,'censor/update.html', context)
+  
+class Updaterecord(View):
+    def get(self, request, *args, **kwargs):
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
+        fag = request.POST['fag']
+        klassetrin = request.POST['klassetrin']
+        teacher = request.POST['teacher']
+        censor = Censor.objects.all
+        censor.firstname = firstname
+        censor.lastname = lastname
+        censor.fag = fag
+        censor.klassetrin = klassetrin
+        censor.teacher = teacher
+        censor.save()
+        return render(request, 'censor/index/html')
+
+class SearchResultsView(ListView):
+    model = Censor
+    template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        object_list = Censor.objects.filter(
+            Q(name__icontains=query) | Q(fag__icontains=query)
+        )
+        return object_list
+        #return Censor.objects.all()

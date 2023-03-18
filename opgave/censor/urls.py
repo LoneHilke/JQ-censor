@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Index, Alle, Fag, Dansk, Tysk, Engelsk, Matematik, Klassetrin, Klasse9, Klasse10
+from .views import Index, Alle, Fag, Dansk, Tysk, Engelsk, Matematik, Klassetrin, Klasse9, Klasse10, Update, Updaterecord, SearchResultsView
 
 urlpatterns = [
     path('',  Index.as_view(), name='index'),
@@ -12,4 +12,7 @@ urlpatterns = [
     path('klassetrin/', Klassetrin.as_view(), name='klassetrin'),
     path('9klasse/', Klasse9.as_view(), name='9klasse'),
     path('10klasse/', Klasse10.as_view(), name='10klasse'),
+    path('update/', Update.as_view(), name='update'),
+    path('update/updaterecord/<int:id>', Updaterecord.as_view, name='updaterecord'),
+    path("search/", SearchResultsView.as_view(), name="search_results"),
 ]
